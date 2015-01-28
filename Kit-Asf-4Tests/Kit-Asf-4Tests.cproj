@@ -31,12 +31,15 @@
   <options>
     <option id="common.boards" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common.services.basic.gpio" value="Add" config="" content-id="Atmel.ASF" />
-    <option id="xmega.drivers.ioport" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common.services.usb.class.device" value="Add" config="vendor_class" content-id="Atmel.ASF" />
+    <option id="xmega.drivers.ioport" value="Add" config="" content-id="Atmel.ASF" />
+    <option id="thirdparty.wireless.avr2025_mac.source.tal" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common.applications.user_application" value="Add" config="" content-id="Atmel.ASF" />
   </options>
   <configurations>
     <configuration key="config.xmega.drivers.usb.device.sleepmgr" value="with_sleepmgr" default="with_sleepmgr" content-id="Atmel.ASF" />
+    <configuration key="config.thirdparty.wireless.avr2025_mac.source.tal" value="at86rf212b" default="at86rf212" content-id="Atmel.ASF" />
+    <configuration key="config.spi_master_type" value="standard_spi" default="standard_spi" content-id="Atmel.ASF" />
   </configurations>
   <files>
     <file path="src/config/conf_board.h" framework="" version="" source="common/applications/user_application/atxmega_rf212b_zigbit_ext/config/conf_board.h" changed="False" content-id="Atmel.ASF" />
@@ -100,6 +103,74 @@
     <file path="src/ASF/common/services/usb/udc/udi.h" framework="" version="3.21.0" source="common\services\usb\udc\udi.h" changed="False" content-id="Atmel.ASF" />
     <file path="src/ASF/xmega/drivers/usb/usb_device.c" framework="" version="3.21.0" source="xmega\drivers\usb\usb_device.c" changed="False" content-id="Atmel.ASF" />
     <file path="src/ASF/xmega/drivers/usb/usb_device.h" framework="" version="3.21.0" source="xmega\drivers\usb\usb_device.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/xmega/drivers/pmic/pmic.h" framework="" version="3.21.0" source="xmega\drivers\pmic\pmic.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/xmega/drivers/spi/spi.c" framework="" version="3.21.0" source="xmega\drivers\spi\spi.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/xmega/drivers/spi/spi.h" framework="" version="3.21.0" source="xmega\drivers\spi\spi.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/xmega/drivers/tc/tc.c" framework="" version="3.21.0" source="xmega\drivers\tc\tc.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/xmega/drivers/tc/tc.h" framework="" version="3.21.0" source="xmega\drivers\tc\tc.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/common/services/delay/delay.h" framework="" version="3.21.0" source="common\services\delay\delay.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/common/services/delay/xmega/cycle_counter.h" framework="" version="3.21.0" source="common\services\delay\xmega\cycle_counter.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/common/services/spi/xmega_spi/spi_master.c" framework="" version="3.21.0" source="common\services\spi\xmega_spi\spi_master.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/common/services/spi/spi_master.h" framework="" version="3.21.0" source="common\services\spi\spi_master.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/common/services/spi/xmega_spi/spi_master.h" framework="" version="3.21.0" source="common\services\spi\xmega_spi\spi_master.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/Config/conf_spi_master.h" framework="" version="3.21.0" source="common\services\spi\xmega_spi\module_config\conf_spi_master.h" changed="False" content-id="Atmel.ASF" />
+    <file path="AVR2025_User_Guide_v3.1.1.pdf" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\doc\AVR2025_User_Guide_v3.1.1.pdf" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/include/return_val.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\include\return_val.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/include/mac_build_config.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\include\mac_build_config.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/include/ieee_const.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\include\ieee_const.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/include/stack_config.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\include\stack_config.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/include/avr2025_mac.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\include\avr2025_mac.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/include/tal_build_config.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\include\tal_build_config.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/mac/inc/mac.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\mac\inc\mac.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/mac/inc/mac_msg_type_data_ind.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\mac\inc\mac_msg_type_data_ind.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/mac/inc/mac_api.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\mac\inc\mac_api.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/mac/inc/mac_msg_const.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\mac\inc\mac_msg_const.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/mac/inc/mac_config.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\mac\inc\mac_config.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/mac/inc/mac_msg_types.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\mac\inc\mac_msg_types.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/pal/pal.c" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\pal\pal.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/pal/pal.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\pal\pal.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/pal/pal_generic.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\pal\pal_generic.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/pal/common_sw_timer/common_sw_timer.c" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\pal\common_sw_timer\common_sw_timer.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/pal/common_sw_timer/common_sw_timer.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\pal\common_sw_timer\common_sw_timer.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/Config/conf_common_sw_timer.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\pal\common_sw_timer\module_config\conf_common_sw_timer.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/resources/queue/src/qmm.c" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\resources\queue\src\qmm.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/resources/buffer/src/bmm.c" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\resources\buffer\src\bmm.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/inc/tal.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\inc\tal.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/Config/app_config.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\resources\module_config\app_config.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/resources/queue/inc/qmm.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\resources\queue\inc\qmm.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/resources/buffer/inc/bmm.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\resources\buffer\inc\bmm.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/src/tal_helper.c" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\src\tal_helper.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/inc/tal_helper.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\inc\tal_helper.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/inc/tal_types.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\inc\tal_types.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/inc/tal_timer_config.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\inc\tal_timer_config.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/inc/tal_generic.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\inc\tal_generic.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/src/tal_pwr_mgmt.c" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal_pwr_mgmt.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/src/tal_pib.c" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal_pib.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/src/tal_slotted_csma.c" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal_slotted_csma.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/src/tal_ed.c" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal_ed.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/src/tal_rx.c" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal_rx.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/src/tal_irq_handler.c" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal_irq_handler.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/src/tal_rx_enable.c" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal_rx_enable.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/src/tal_tx.c" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal_tx.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/src/tal_init.c" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal_init.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/src/tal.c" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/inc/tal_irq_handler.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\inc\tal_irq_handler.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/inc/tal_constants.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\inc\tal_constants.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/inc/tal_tx.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\inc\tal_tx.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/inc/at86rf212b.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\inc\at86rf212b.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/inc/tal_internal.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\inc\tal_internal.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/inc/tal_slotted_csma.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\inc\tal_slotted_csma.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/inc/tal_pib.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\inc\tal_pib.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/inc/tal_config.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\inc\tal_config.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/inc/tal_rx.h" framework="" version="3.21.0" source="thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\inc\tal_rx.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/services/common_hw_timer/xmega/hw_timer.c" framework="" version="3.21.0" source="thirdparty\wireless\services\common_hw_timer\xmega\hw_timer.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/services/common_hw_timer/common_hw_timer.h" framework="" version="3.21.0" source="thirdparty\wireless\services\common_hw_timer\common_hw_timer.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/services/common_hw_timer/xmega/hw_timer.h" framework="" version="3.21.0" source="thirdparty\wireless\services\common_hw_timer\xmega\hw_timer.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/Config/conf_hw_timer.h" framework="" version="3.21.0" source="thirdparty\wireless\services\common_hw_timer\module_config\conf_hw_timer.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/services/common_hw_timer/xmega/lib/libxmegaa3_hw_timer_lib.a" framework="" version="3.21.0" source="thirdparty\wireless\services\common_hw_timer\xmega\lib\libxmegaa3_hw_timer_lib.a" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/services/trx_access/trx_access.c" framework="" version="3.21.0" source="thirdparty\wireless\services\trx_access\trx_access.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/thirdparty/wireless/services/trx_access/trx_access.h" framework="" version="3.21.0" source="thirdparty\wireless\services\trx_access\trx_access.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/Config/conf_trx_access.h" framework="" version="3.21.0" source="thirdparty\wireless\services\trx_access\module_config\conf_trx_access.h" changed="False" content-id="Atmel.ASF" />
   </files>
   <documentation help="http://asf.atmel.com/docs/3.21.0/common.applications.user_application.xmega_rf212b_zigbit_ext/html/index.html" />
   <offline-documentation help="" />
@@ -139,6 +210,10 @@
       <Value>CONFIG_NVM_IGNORE_XMEGA_A3_D3_REVB_ERRATA</Value>
       <Value>BOARD=XMEGA_RF212B_ZIGBIT</Value>
       <Value>IOPORT_XMEGA_COMPAT</Value>
+      <Value>_DEBUG_=0</Value>
+      <Value>TAL_TYPE=AT86RF212B</Value>
+      <Value>DISABLE_TSTAMP_IRQ=1</Value>
+      <Value>PAL_USE_SPI_TRX=1</Value>
     </ListValues>
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
@@ -164,6 +239,23 @@
       <Value>../src/ASF/common/services/usb/class/vendor/device</Value>
       <Value>../src/ASF/common/services/usb/udc</Value>
       <Value>../src/ASF/xmega/drivers/usb</Value>
+      <Value>../src/ASF/xmega/drivers/pmic</Value>
+      <Value>../src/ASF/xmega/drivers/spi</Value>
+      <Value>../src/ASF/xmega/drivers/tc</Value>
+      <Value>../src/ASF/common/services/delay</Value>
+      <Value>../src/ASF/common/services/spi/xmega_spi</Value>
+      <Value>../src/ASF/common/services/spi</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/include</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/mac/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/pal</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/pal/common_sw_timer</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/tal/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/resources/buffer/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/resources/queue/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/services/common_hw_timer</Value>
+      <Value>../src/ASF/thirdparty/wireless/services/common_hw_timer/xmega</Value>
+      <Value>../src/ASF/thirdparty/wireless/services/trx_access</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
@@ -174,9 +266,15 @@
   <avrgcc.compiler.miscellaneous.OtherFlags>-std=gnu99 -fno-strict-aliasing -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax</avrgcc.compiler.miscellaneous.OtherFlags>
   <avrgcc.linker.libraries.Libraries>
     <ListValues>
+      <Value>libxmegaa3_hw_timer_lib</Value>
       <Value>libm</Value>
     </ListValues>
   </avrgcc.linker.libraries.Libraries>
+  <avrgcc.linker.libraries.LibrarySearchPaths>
+    <ListValues>
+      <Value>../src/ASF/thirdparty/wireless/services/common_hw_timer/xmega/lib</Value>
+    </ListValues>
+  </avrgcc.linker.libraries.LibrarySearchPaths>
   <avrgcc.linker.miscellaneous.LinkerFlags>-Wl,--relax -Wl,--section-start=.BOOT=0x40000</avrgcc.linker.miscellaneous.LinkerFlags>
   <avrgcc.assembler.general.AssemblerFlags>-mrelax -DBOARD=XMEGA_RF212B_ZIGBIT -DCONFIG_NVM_IGNORE_XMEGA_A3_D3_REVB_ERRATA -DIOPORT_XMEGA_COMPAT</avrgcc.assembler.general.AssemblerFlags>
   <avrgcc.assembler.general.IncludePaths>
@@ -202,6 +300,23 @@
       <Value>../src/ASF/common/services/usb/class/vendor/device</Value>
       <Value>../src/ASF/common/services/usb/udc</Value>
       <Value>../src/ASF/xmega/drivers/usb</Value>
+      <Value>../src/ASF/xmega/drivers/pmic</Value>
+      <Value>../src/ASF/xmega/drivers/spi</Value>
+      <Value>../src/ASF/xmega/drivers/tc</Value>
+      <Value>../src/ASF/common/services/delay</Value>
+      <Value>../src/ASF/common/services/spi/xmega_spi</Value>
+      <Value>../src/ASF/common/services/spi</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/include</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/mac/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/pal</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/pal/common_sw_timer</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/tal/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/resources/buffer/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/resources/queue/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/services/common_hw_timer</Value>
+      <Value>../src/ASF/thirdparty/wireless/services/common_hw_timer/xmega</Value>
+      <Value>../src/ASF/thirdparty/wireless/services/trx_access</Value>
     </ListValues>
   </avrgcc.assembler.general.IncludePaths>
 </AvrGcc>
@@ -222,6 +337,10 @@
       <Value>CONFIG_NVM_IGNORE_XMEGA_A3_D3_REVB_ERRATA</Value>
       <Value>BOARD=XMEGA_RF212B_ZIGBIT</Value>
       <Value>IOPORT_XMEGA_COMPAT</Value>
+      <Value>_DEBUG_=0</Value>
+      <Value>TAL_TYPE=AT86RF212B</Value>
+      <Value>DISABLE_TSTAMP_IRQ=1</Value>
+      <Value>PAL_USE_SPI_TRX=1</Value>
     </ListValues>
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
@@ -247,6 +366,23 @@
       <Value>../src/ASF/common/services/usb/class/vendor/device</Value>
       <Value>../src/ASF/common/services/usb/udc</Value>
       <Value>../src/ASF/xmega/drivers/usb</Value>
+      <Value>../src/ASF/xmega/drivers/pmic</Value>
+      <Value>../src/ASF/xmega/drivers/spi</Value>
+      <Value>../src/ASF/xmega/drivers/tc</Value>
+      <Value>../src/ASF/common/services/delay</Value>
+      <Value>../src/ASF/common/services/spi/xmega_spi</Value>
+      <Value>../src/ASF/common/services/spi</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/include</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/mac/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/pal</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/pal/common_sw_timer</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/tal/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/resources/buffer/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/resources/queue/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/services/common_hw_timer</Value>
+      <Value>../src/ASF/thirdparty/wireless/services/common_hw_timer/xmega</Value>
+      <Value>../src/ASF/thirdparty/wireless/services/trx_access</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -258,9 +394,15 @@
   <avrgcc.compiler.miscellaneous.OtherFlags>-std=gnu99 -fno-strict-aliasing -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax</avrgcc.compiler.miscellaneous.OtherFlags>
   <avrgcc.linker.libraries.Libraries>
     <ListValues>
+      <Value>libxmegaa3_hw_timer_lib</Value>
       <Value>libm</Value>
     </ListValues>
   </avrgcc.linker.libraries.Libraries>
+  <avrgcc.linker.libraries.LibrarySearchPaths>
+    <ListValues>
+      <Value>../src/ASF/thirdparty/wireless/services/common_hw_timer/xmega/lib</Value>
+    </ListValues>
+  </avrgcc.linker.libraries.LibrarySearchPaths>
   <avrgcc.linker.miscellaneous.LinkerFlags>-Wl,--relax -Wl,--section-start=.BOOT=0x40000</avrgcc.linker.miscellaneous.LinkerFlags>
   <avrgcc.assembler.general.AssemblerFlags>-mrelax -DBOARD=XMEGA_RF212B_ZIGBIT -DCONFIG_NVM_IGNORE_XMEGA_A3_D3_REVB_ERRATA -DIOPORT_XMEGA_COMPAT</avrgcc.assembler.general.AssemblerFlags>
   <avrgcc.assembler.general.IncludePaths>
@@ -286,6 +428,23 @@
       <Value>../src/ASF/common/services/usb/class/vendor/device</Value>
       <Value>../src/ASF/common/services/usb/udc</Value>
       <Value>../src/ASF/xmega/drivers/usb</Value>
+      <Value>../src/ASF/xmega/drivers/pmic</Value>
+      <Value>../src/ASF/xmega/drivers/spi</Value>
+      <Value>../src/ASF/xmega/drivers/tc</Value>
+      <Value>../src/ASF/common/services/delay</Value>
+      <Value>../src/ASF/common/services/spi/xmega_spi</Value>
+      <Value>../src/ASF/common/services/spi</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/include</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/mac/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/pal</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/pal/common_sw_timer</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/tal/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/resources/buffer/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/resources/queue/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/avr2025_mac/source/tal/at86rf212b/inc</Value>
+      <Value>../src/ASF/thirdparty/wireless/services/common_hw_timer</Value>
+      <Value>../src/ASF/thirdparty/wireless/services/common_hw_timer/xmega</Value>
+      <Value>../src/ASF/thirdparty/wireless/services/trx_access</Value>
     </ListValues>
   </avrgcc.assembler.general.IncludePaths>
   <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
@@ -300,12 +459,16 @@
     <Folder Include="src\ASF\common\services\" />
     <Folder Include="src\ASF\common\services\clock\" />
     <Folder Include="src\ASF\common\services\clock\xmega\" />
+    <Folder Include="src\ASF\common\services\delay\" />
+    <Folder Include="src\ASF\common\services\delay\xmega\" />
     <Folder Include="src\ASF\common\services\gpio\" />
     <Folder Include="src\ASF\common\services\gpio\xmega_gpio\" />
     <Folder Include="src\ASF\common\services\ioport\" />
     <Folder Include="src\ASF\common\services\ioport\xmega\" />
     <Folder Include="src\ASF\common\services\sleepmgr\" />
     <Folder Include="src\ASF\common\services\sleepmgr\xmega\" />
+    <Folder Include="src\ASF\common\services\spi\" />
+    <Folder Include="src\ASF\common\services\spi\xmega_spi\" />
     <Folder Include="src\ASF\common\services\usb\" />
     <Folder Include="src\ASF\common\services\usb\class\" />
     <Folder Include="src\ASF\common\services\usb\class\vendor\" />
@@ -314,13 +477,43 @@
     <Folder Include="src\ASF\common\utils\" />
     <Folder Include="src\ASF\common\utils\interrupt\" />
     <Folder Include="src\ASF\common\utils\make\" />
+    <Folder Include="src\ASF\thirdparty\" />
+    <Folder Include="src\ASF\thirdparty\wireless\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\include\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\source\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\source\mac\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\source\mac\inc\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\source\pal\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\source\pal\common_sw_timer\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\source\resources\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\source\resources\buffer\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\source\resources\buffer\inc\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\source\resources\buffer\src\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\source\resources\queue\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\source\resources\queue\inc\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\source\resources\queue\src\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\inc\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\inc\" />
+    <Folder Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\src\" />
+    <Folder Include="src\ASF\thirdparty\wireless\services\" />
+    <Folder Include="src\ASF\thirdparty\wireless\services\common_hw_timer\" />
+    <Folder Include="src\ASF\thirdparty\wireless\services\common_hw_timer\xmega\" />
+    <Folder Include="src\ASF\thirdparty\wireless\services\common_hw_timer\xmega\lib\" />
+    <Folder Include="src\ASF\thirdparty\wireless\services\trx_access\" />
     <Folder Include="src\ASF\xmega\" />
     <Folder Include="src\ASF\xmega\boards\" />
     <Folder Include="src\ASF\xmega\boards\xmega_rf212b_zigbit\" />
     <Folder Include="src\ASF\xmega\drivers\" />
     <Folder Include="src\ASF\xmega\drivers\cpu\" />
     <Folder Include="src\ASF\xmega\drivers\nvm\" />
+    <Folder Include="src\ASF\xmega\drivers\pmic\" />
     <Folder Include="src\ASF\xmega\drivers\sleep\" />
+    <Folder Include="src\ASF\xmega\drivers\spi\" />
+    <Folder Include="src\ASF\xmega\drivers\tc\" />
     <Folder Include="src\ASF\xmega\drivers\usb\" />
     <Folder Include="src\ASF\xmega\utils\" />
     <Folder Include="src\ASF\xmega\utils\assembler\" />
@@ -330,6 +523,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="src\asf.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\services\common_hw_timer\xmega\lib\libxmegaa3_hw_timer_lib.a">
       <SubType>compile</SubType>
     </None>
     <None Include="src\config\conf_board.h">
@@ -425,6 +621,12 @@
     <None Include="src\ASF\common\services\clock\xmega\sysclk.h">
       <SubType>compile</SubType>
     </None>
+    <None Include="src\ASF\common\services\delay\delay.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\common\services\delay\xmega\cycle_counter.h">
+      <SubType>compile</SubType>
+    </None>
     <Compile Include="src\ASF\common\services\ioport\xmega\ioport_compat.c">
       <SubType>compile</SubType>
     </Compile>
@@ -444,6 +646,15 @@
       <SubType>compile</SubType>
     </None>
     <None Include="src\ASF\common\services\usb\class\vendor\usb_protocol_vendor.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\common\services\spi\spi_master.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\ASF\common\services\spi\xmega_spi\spi_master.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\common\services\spi\xmega_spi\spi_master.h">
       <SubType>compile</SubType>
     </None>
     <Compile Include="src\ASF\common\services\usb\class\vendor\device\udi_vendor.c">
@@ -471,6 +682,159 @@
       <SubType>compile</SubType>
     </None>
     <None Include="src\ASF\common\services\usb\udc\udi.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\include\return_val.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\include\mac_build_config.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\include\ieee_const.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\include\stack_config.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\include\avr2025_mac.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\include\tal_build_config.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\mac\inc\mac.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\mac\inc\mac_msg_type_data_ind.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\mac\inc\mac_api.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\mac\inc\mac_msg_const.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\mac\inc\mac_config.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\mac\inc\mac_msg_types.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\ASF\thirdparty\wireless\avr2025_mac\source\pal\common_sw_timer\common_sw_timer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\pal\common_sw_timer\common_sw_timer.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\ASF\thirdparty\wireless\avr2025_mac\source\pal\pal.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\pal\pal.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\pal\pal_generic.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\resources\buffer\inc\bmm.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\ASF\thirdparty\wireless\avr2025_mac\source\resources\buffer\src\bmm.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\resources\queue\inc\qmm.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\ASF\thirdparty\wireless\avr2025_mac\source\resources\queue\src\qmm.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\inc\tal.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\inc\tal_helper.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\inc\tal_types.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\inc\tal_timer_config.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\inc\tal_generic.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\inc\tal_irq_handler.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\inc\tal_constants.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\inc\tal_tx.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\inc\at86rf212b.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\inc\tal_internal.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\inc\tal_slotted_csma.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\inc\tal_pib.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\inc\tal_config.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\inc\tal_rx.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal_ed.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal_init.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal_irq_handler.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal_pib.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal_pwr_mgmt.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal_rx.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal_rx_enable.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal_slotted_csma.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\at86rf212b\src\tal_tx.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\thirdparty\wireless\avr2025_mac\source\tal\src\tal_helper.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\thirdparty\wireless\services\common_hw_timer\common_hw_timer.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\ASF\thirdparty\wireless\services\common_hw_timer\xmega\hw_timer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\thirdparty\wireless\services\common_hw_timer\xmega\hw_timer.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\ASF\thirdparty\wireless\services\trx_access\trx_access.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\thirdparty\wireless\services\trx_access\trx_access.h">
       <SubType>compile</SubType>
     </None>
     <Compile Include="src\ASF\xmega\boards\xmega_rf212b_zigbit\init.c">
@@ -506,10 +870,40 @@
     <None Include="src\config\conf_usb.h">
       <SubType>compile</SubType>
     </None>
+    <None Include="src\ASF\xmega\drivers\pmic\pmic.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\ASF\xmega\drivers\spi\spi.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\xmega\drivers\spi\spi.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\ASF\xmega\drivers\tc\tc.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\xmega\drivers\tc\tc.h">
+      <SubType>compile</SubType>
+    </None>
     <Compile Include="src\ASF\xmega\drivers\usb\usb_device.c">
       <SubType>compile</SubType>
     </Compile>
     <None Include="src\ASF\xmega\drivers\usb\usb_device.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\config\conf_spi_master.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\config\conf_common_sw_timer.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\config\app_config.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\config\conf_hw_timer.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\config\conf_trx_access.h">
       <SubType>compile</SubType>
     </None>
     <Compile Include="src\main.c">

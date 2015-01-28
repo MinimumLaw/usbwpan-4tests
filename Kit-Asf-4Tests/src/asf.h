@@ -56,6 +56,9 @@
 #include <ccp.h>
 #include <xmega_reset_cause.h>
 
+// From module: Delay routines
+#include <delay.h>
+
 // From module: GPIO - General purpose Input/Output
 #include <gpio.h>
 
@@ -71,8 +74,18 @@
 // From module: NVM - Non Volatile Memory
 #include <nvm.h>
 
+// From module: PMIC - Programmable Multi-level Interrupt Controller
+#include <pmic.h>
+
 // From module: Part identification macros
 #include <parts.h>
+
+// From module: SPI - Serial Peripheral Interface
+#include <spi.h>
+
+// From module: SPI - XMEGA implementation
+#include <spi_master.h>
+#include <spi_master.h>
 
 // From module: Sleep Controller driver
 #include <sleep.h>
@@ -83,6 +96,9 @@
 
 // From module: System Clock Control - XMEGA A1U/A3U/A3BU/A4U/B/C implementation
 #include <sysclk.h>
+
+// From module: TC - Timer Counter
+#include <tc.h>
 
 // From module: USB Device Stack Core (Common API)
 #include <udc.h>
