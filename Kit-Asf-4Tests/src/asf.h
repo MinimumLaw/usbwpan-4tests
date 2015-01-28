@@ -100,6 +100,12 @@
 // From module: TC - Timer Counter
 #include <tc.h>
 
+// From module: USART - Serial interface - XMEGA implementation
+#include <serial.h>
+
+// From module: USART - Universal Synchronous/Asynchronous Receiver/Transmitter
+#include <usart.h>
+
 // From module: USB Device Stack Core (Common API)
 #include <udc.h>
 #include <udd.h>
