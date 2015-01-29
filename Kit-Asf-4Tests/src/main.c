@@ -29,12 +29,22 @@
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include <asf.h>
+#include <tal.h>
+
+void tal_rx_frame_cb(frame_info_t *rx_frame) {
+	/**/
+}
+
+void tal_tx_frame_done_cb(retval_t status, frame_info_t *frame) {
+	/**/
+}
 
 int main (void)
 {
-	// Insert system clock initialization code here (sysclk_init()).
-
 	board_init();
 
-	// Insert application code here, after the board has been initialized.
+	while(true){
+		tal_task();
+		sleepmgr_enter_sleep();
+	}
 }

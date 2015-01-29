@@ -48,8 +48,7 @@
 #include <conf_board.h>
 #include <board.h>
 #include <ioport.h>
-
-
+#include <tal.h>
 
 void board_init(void)
 {
@@ -93,6 +92,14 @@ ioport_configure_pin(IOPORT_CREATE_PIN(PORTD, 2), IOPORT_DIR_INPUT);
 	ioport_configure_pin(AT86RFX_RST_PIN, IOPORT_DIR_OUTPUT | IOPORT_INIT_HIGH);
 	ioport_configure_pin(AT86RFX_SLP_PIN, IOPORT_DIR_OUTPUT | IOPORT_INIT_HIGH);
 #endif
+
+	sysclk_init();
+	irq_initialize_vectors();
+	sleepmgr_init();
+	tal_init();
+
+	udc_start();
+	udc_attach();
 }
 
 
