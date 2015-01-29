@@ -57,21 +57,22 @@
  */
 
 //! Device definition (mandatory)
-#define  USB_DEVICE_VENDOR_ID             USB_VID_ATMEL
-#define  USB_DEVICE_PRODUCT_ID            USB_PID_ATMEL_ASF_VENDOR_CLASS
+#define  USB_DEVICE_VENDOR_ID             0xADCA
+#define  USB_DEVICE_PRODUCT_ID            0x1234
 #define  USB_DEVICE_MAJOR_VERSION         1
 #define  USB_DEVICE_MINOR_VERSION         0
 #define  USB_DEVICE_POWER                 100 // Consumption on VBUS line (mA)
 #define  USB_DEVICE_ATTR                  \
-	(USB_CONFIG_ATTR_SELF_POWERED)
-// (USB_CONFIG_ATTR_BUS_POWERED)
+	(USB_CONFIG_ATTR_REMOTE_WAKEUP|USB_CONFIG_ATTR_BUS_POWERED)
+//	(USB_CONFIG_ATTR_SELF_POWERED)
+//  (USB_CONFIG_ATTR_BUS_POWERED)
 //	(USB_CONFIG_ATTR_REMOTE_WAKEUP|USB_CONFIG_ATTR_SELF_POWERED)
 //	(USB_CONFIG_ATTR_REMOTE_WAKEUP|USB_CONFIG_ATTR_BUS_POWERED)
 
 //! USB Device string definitions (Optional)
-// #define  USB_DEVICE_MANUFACTURE_NAME      "Manufacture name"
-// #define  USB_DEVICE_PRODUCT_NAME          "Product name"
-// #define  USB_DEVICE_SERIAL_NAME           "12...EF"
+#define  USB_DEVICE_MANUFACTURE_NAME      "OAO Radioavionica"
+#define  USB_DEVICE_PRODUCT_NAME          "PRCM for tests"
+#define  USB_DEVICE_SERIAL_NAME           "29.01.2015"
 
 /**
  * Device speeds support
@@ -106,6 +107,8 @@
 //! other than manufacturer, product and serial string
 // #define  UDC_GET_EXTRA_STRING()
 //@}
+#define  UDC_REMOTEWAKEUP_ENABLE()        true
+#define  UDC_REMOTEWAKEUP_DISABLE()       true
 
 //@}
 
@@ -138,18 +141,18 @@
 
 //! endpoints size for full speed
 //! Note: Disable the endpoints of a type, if size equal 0
-#define UDI_VENDOR_EPS_SIZE_INT_FS    64
+#define UDI_VENDOR_EPS_SIZE_INT_FS    0
 #define UDI_VENDOR_EPS_SIZE_BULK_FS   64
 #if SAMG55
 #define UDI_VENDOR_EPS_SIZE_ISO_FS   0
 #else
-#define UDI_VENDOR_EPS_SIZE_ISO_FS   256
+#define UDI_VENDOR_EPS_SIZE_ISO_FS   0
 #endif
 
 //! endpoints size for high speed
-#define UDI_VENDOR_EPS_SIZE_INT_HS    64
+#define UDI_VENDOR_EPS_SIZE_INT_HS    0
 #define UDI_VENDOR_EPS_SIZE_BULK_HS  512
-#define UDI_VENDOR_EPS_SIZE_ISO_HS    64
+#define UDI_VENDOR_EPS_SIZE_ISO_HS    0
 
 //@}
 
