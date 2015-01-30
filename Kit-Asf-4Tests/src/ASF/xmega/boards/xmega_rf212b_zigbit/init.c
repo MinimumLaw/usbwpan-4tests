@@ -96,6 +96,8 @@ ioport_configure_pin(IOPORT_CREATE_PIN(PORTD, 2), IOPORT_DIR_INPUT);
 	sysclk_init();
 	irq_initialize_vectors();
 	sleepmgr_init();
+
+	sw_timer_init();
 	tal_init();
 
 	udc_start();

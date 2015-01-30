@@ -107,8 +107,13 @@
 //! other than manufacturer, product and serial string
 // #define  UDC_GET_EXTRA_STRING()
 //@}
-#define  UDC_REMOTEWAKEUP_ENABLE()        true
-#define  UDC_REMOTEWAKEUP_DISABLE()       true
+#define  UDC_SUSPEND_EVENT()              udc_suspend()
+extern void udc_suspend(void);
+#define  UDC_RESUME_EVENT()               udc_resume()
+extern void udc_resume(void);
+#define  UDC_REMOTEWAKEUP_ENABLE()        udc_remote_wakeup(true)
+#define  UDC_REMOTEWAKEUP_DISABLE()       udc_remote_wakeup(false)
+extern void udc_remote_wakeup(bool state);
 
 //@}
 
@@ -123,10 +128,14 @@
  * @{
  */
 //! Interface callback definition
-#define UDI_VENDOR_ENABLE_EXT()          true
-#define UDI_VENDOR_DISABLE_EXT()
-#define UDI_VENDOR_SETUP_OUT_RECEIVED()  false
-#define UDI_VENDOR_SETUP_IN_RECEIVED()   false
+#define UDI_VENDOR_ENABLE_EXT()			udc_enable_dev()
+extern bool udc_enable_dev(void);
+#define UDI_VENDOR_DISABLE_EXT()		udc_disable_dev()
+extern void udc_disable_dev(void);
+#define UDI_VENDOR_SETUP_OUT_RECEIVED()	udc_prcm_setup_req()
+extern bool udc_prcm_setup_req(void);
+#define UDI_VENDOR_SETUP_IN_RECEIVED()	udc_prcm_setup_ack()
+extern bool udc_prcm_setup_ack(void);
 /*
  * #define UDI_VENDOR_ENABLE_EXT() my_callback_vendor_enable()
  * extern bool my_callback_vendor_enable(void);
