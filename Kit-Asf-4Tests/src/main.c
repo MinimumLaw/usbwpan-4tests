@@ -60,22 +60,33 @@ void tal_tx_frame_done_cb(retval_t status, frame_info_t *frame) {
  */
 void udc_data_received(udd_ep_status_t status,
 		iram_size_t nb_transfered, udd_ep_id_t ep) {
-	/**/
 	buffer_t *buff;
 
-	buff = bmm_buffer_alloc(nb_transfered);
-	if(buff == NULL) {
-		/* No buffer allocated (No memory???) - simple drop
-		   received data and restart receive procedure */
-		return;
+	if(status == UDD_EP_TRANSFER_OK) {
+		buff = bmm_buffer_alloc(nb_transfered);
+		if(buff == NULL) {
+			/* No buffer allocated (No memory???) - simple drop
+				received data and abort later receive */
+			udd_ep_abort(ep);
+			return;
+		};
+		memcpy(buff->body, udc_to_prcm_buff, nb_transfered);
+		qmm_queue_append(&host_to_radio_queue, buff);
+		/* restart transfer */
+		udd_ep_run(UDI_VENDOR_EP_BULK_IN, false, udc_to_prcm_buff,
+			128, udc_data_received);
+
+	} else {
+		/* Transfer aborted , try to restart transfer */
+		udd_ep_run(UDI_VENDOR_EP_BULK_IN, false, udc_to_prcm_buff,
+			128, udc_data_received);
 	}
-	memcpy(buff->body, udc_to_prcm_buff, nb_transfered);
-	qmm_queue_append(&host_to_radio_queue, buff);
 }
 
 void udc_data_transmitted(udd_ep_status_t status,
 		iram_size_t nb_transfered, udd_ep_id_t ep) {
-	/**/
+	/* set NACK on endpoint, until next transfer */
+	udd_ep_abort(ep);
 }
 
 void udc_suspend(void) {
@@ -92,10 +103,12 @@ void udc_remote_wakeup(bool state) {
 
 bool udc_enable_dev(void) {
 	/**/
-	udd_ep_run(UDI_VENDOR_EP_BULK_IN, false, udc_to_prcm_buff,
+	udd_ep_run(UDI_VENDOR_EP_BULK_OUT, false, udc_to_prcm_buff,
 		128, udc_data_received);
-	udd_ep_run(UDI_VENDOR_EP_BULK_OUT, false, prcm_to_udc_buff,
+/*
+	udd_ep_run(UDI_VENDOR_EP_BULK_IN, false, prcm_to_udc_buff,
 		2568, udc_data_transmitted);
+*/
 	tal_reset(true);
 	return true;
 }
@@ -104,14 +117,55 @@ void udc_disable_dev(void) {
 	/**/
 }
 
+enum { /* Setup requests wValue for device configurations */
+	REQ_WPAN_START,
+	REQ_WPAN_STOP,
+	REQ_WPAN_SET_CHANNEL,
+	REQ_WPAN_SET_HWADDR_FILT,
+	REQ_WAPN_SET_HWADDR,
+	REQ_WPAN_SET_TXPOWER,
+	REQ_WAPN_SET_LBT,
+	REQ_WPAN_SET_CCA_MODE,
+	REQ_WPAN_SET_CCA_ED_LEVEL,
+	REQ_WPAN_SET_CSMA_PARAMS,
+	REQ_WPAN_SET_FRAME_RETRIES,
+	REQ_WPAN_GET_ED,
+	REQ_WAPN_GET_FEATURES,
+	REQ_WPAN_GET_CHANNEL_LIST,
+};
+
 bool udc_prcm_setup_req(void) {
 	/**/
-	return true;
+	bool ret = false;
+	switch(udd_g_ctrlreq.req.wValue) {
+		case REQ_WPAN_START:
+		case REQ_WPAN_STOP:
+		case REQ_WPAN_SET_CHANNEL:
+		case REQ_WPAN_SET_HWADDR_FILT:
+		case REQ_WAPN_SET_HWADDR:
+		case REQ_WPAN_SET_TXPOWER:
+		case REQ_WAPN_SET_LBT:
+		case REQ_WPAN_SET_CCA_MODE:
+		case REQ_WPAN_SET_CCA_ED_LEVEL:
+		case REQ_WPAN_SET_CSMA_PARAMS:
+		case REQ_WPAN_SET_FRAME_RETRIES:
+			ret = true;
+			break;
+	}
+	return ret;
 }
 
 bool udc_prcm_setup_ack(void) {
 	/**/
-	return true;
+	bool ret = false;
+	switch (udd_g_ctrlreq.req.wValue) {
+		case REQ_WPAN_GET_ED:
+		case REQ_WAPN_GET_FEATURES:
+		case REQ_WPAN_GET_CHANNEL_LIST:
+			ret = true;
+			break;
+	}
+	return ret;
 }
 
 /*
@@ -129,12 +183,16 @@ void prcm_task(void) {
 	to_host = qmm_queue_remove(&radio_to_host_queue, NULL);
 	if(to_host != NULL) {
 		/* send frame via USB */
+		udd_ep_run(UDI_VENDOR_EP_BULK_IN, false, to_host->body,
+			to_host->body[0] + 3, udc_data_transmitted);
 		bmm_buffer_free(to_host);
 	};
 
 	to_radio = qmm_queue_remove(&host_to_radio_queue, NULL);
 	if(to_radio != NULL) {
 		/* send frame via radio */
+		tal_tx_frame((struct frame_info_t *)to_radio->body, 0,false); 
+			/*dev_cfg.csma_mode, dev_cfg.max_frame_retries > 0 ? true : false); */
 		bmm_buffer_free(to_radio);
 	};
 }
