@@ -58,10 +58,10 @@
 
 //! Device definition (mandatory)
 #define  USB_DEVICE_VENDOR_ID             0xADCA
-#define  USB_DEVICE_PRODUCT_ID            0x1234
+#define  USB_DEVICE_PRODUCT_ID            0x1001
 #define  USB_DEVICE_MAJOR_VERSION         1
-#define  USB_DEVICE_MINOR_VERSION         0
-#define  USB_DEVICE_POWER                 100 // Consumption on VBUS line (mA)
+#define  USB_DEVICE_MINOR_VERSION         2
+#define  USB_DEVICE_POWER                 500 // Consumption on VBUS line (mA)
 #define  USB_DEVICE_ATTR                  \
 	(USB_CONFIG_ATTR_REMOTE_WAKEUP|USB_CONFIG_ATTR_BUS_POWERED)
 //	(USB_CONFIG_ATTR_SELF_POWERED)
