@@ -178,6 +178,7 @@ void prcm_task(void) {
 int main (void)
 {
 	board_init();
+	wpan_pib_init();
 
 	while(true){
 		pal_task();

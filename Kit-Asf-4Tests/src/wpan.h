@@ -214,6 +214,7 @@ struct __attribute__((packed)) wpan_csma_params {
 /*
  * Functions prototypes
  */
+void wpan_pib_init(void); /* General initialization functon */
 bool prepare_setup_request(uint16_t req_type);
 
 #endif

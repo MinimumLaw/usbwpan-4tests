@@ -8,6 +8,49 @@
 uint32_t		channel_page_support[WPAN_NUM_PAGES];
 wpan_dev_cfg	dev_cfg;
 
+static void dev_cfg_to_tal_pib(void)
+{
+	tal_pib_set(macIeeeAddress, (pib_value_t *)&dev_cfg.ieee_addr);
+	tal_pib_set(macShortAddress, (pib_value_t *)&dev_cfg.short_addr);
+	tal_pib_set(macPANId, (pib_value_t *)&dev_cfg.pan_id);
+	tal_pib_set(macMinBE, (pib_value_t *)&dev_cfg.csma_min_be);
+	tal_pib_set(macMaxBE, (pib_value_t *)&dev_cfg.csma_max_be);
+	tal_pib_set(macMaxFrameRetries, (pib_value_t *)&dev_cfg.csma_retries);
+	tal_pib_set(phyCCAMode, (pib_value_t *)&dev_cfg.cca_mode);
+	tal_pib_set(phyCurrentPage, (pib_value_t *)&dev_cfg.page);
+	tal_pib_set(phyCurrentChannel, (pib_value_t *)&dev_cfg.channel);
+	tal_pib_set(phyTransmitPower, (pib_value_t *)&dev_cfg.tx_power);
+}
+
+/* General initialisation functon */
+void wpan_pib_init(void)
+{
+	/* basic IEEE 802.15.4 params */
+	dev_cfg.ieee_addr = 0xCAFEBABEDEADBEAF;
+	dev_cfg.short_addr = 0x0000;
+	dev_cfg.pan_id = 0x0000;
+	dev_cfg.pan_coordinator = false;
+	dev_cfg.page = 0x00;
+	dev_cfg.channel = 0x00;
+	dev_cfg.tx_power = 0x00;
+	/* CCA params */
+	dev_cfg.cca_ed_level = 0x00;
+	dev_cfg.cca_mode = 0x00;
+	dev_cfg.max_frame_retries = 0x00;
+	/* CSMA params */
+	dev_cfg.csma_mode = 0x00;
+	dev_cfg.csma_min_be = 0x00;
+	dev_cfg.csma_max_be = 0x00;
+	dev_cfg.csma_retries = 0x00;
+	/* Hardware specific params */
+	dev_cfg.flags = 0x00; /* IEEE802154_HW_ later in this file */
+	dev_cfg.last_ed = 0x00;
+	dev_cfg.wpan_active = false;
+	dev_cfg.lbt_mode = false;
+	dev_cfg.pa_ext_sw_ctrl = true;
+	dev_cfg_to_tal_pib();
+}
+
 /* START and STOP use dummy write */
 static struct wpan_dummy_write dummy_write;
 void start_callback(void)
@@ -142,7 +185,7 @@ void frame_retries_callback(void)
 
 #define SETUP_REQ_CALLBACK(structure, function) \
 { \
-	udd_g_ctrlreq.payload = &structure; \
+	udd_g_ctrlreq.payload = (uint8_t *)&structure; \
 	udd_g_ctrlreq.payload_size = udd_g_ctrlreq.req.wLength; \
 	udd_g_ctrlreq.callback = &function; \
 	ret = true; \
