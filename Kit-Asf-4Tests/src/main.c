@@ -33,6 +33,8 @@
 #include <tal.h>
 #include <string.h> /* memcpy */
 
+#include "wpan.h"
+
 COMPILER_WORD_ALIGNED
 uint8_t	udc_to_prcm_buff[128];
 
@@ -117,54 +119,30 @@ void udc_disable_dev(void) {
 	/**/
 }
 
-enum { /* Setup requests wValue for device configurations */
-	REQ_WPAN_START,
-	REQ_WPAN_STOP,
-	REQ_WPAN_SET_CHANNEL,
-	REQ_WPAN_SET_HWADDR_FILT,
-	REQ_WAPN_SET_HWADDR,
-	REQ_WPAN_SET_TXPOWER,
-	REQ_WAPN_SET_LBT,
-	REQ_WPAN_SET_CCA_MODE,
-	REQ_WPAN_SET_CCA_ED_LEVEL,
-	REQ_WPAN_SET_CSMA_PARAMS,
-	REQ_WPAN_SET_FRAME_RETRIES,
-	REQ_WPAN_GET_ED,
-	REQ_WAPN_GET_FEATURES,
-	REQ_WPAN_GET_CHANNEL_LIST,
-};
-
 bool udc_prcm_setup_req(void) {
 	/**/
-	bool ret = false;
-	switch(udd_g_ctrlreq.req.wValue) {
-		case REQ_WPAN_START:
-		case REQ_WPAN_STOP:
-		case REQ_WPAN_SET_CHANNEL:
-		case REQ_WPAN_SET_HWADDR_FILT:
-		case REQ_WAPN_SET_HWADDR:
-		case REQ_WPAN_SET_TXPOWER:
-		case REQ_WAPN_SET_LBT:
-		case REQ_WPAN_SET_CCA_MODE:
-		case REQ_WPAN_SET_CCA_ED_LEVEL:
-		case REQ_WPAN_SET_CSMA_PARAMS:
-		case REQ_WPAN_SET_FRAME_RETRIES:
-			ret = true;
-			break;
-	}
-	return ret;
+	return prepare_setup_request(udd_g_ctrlreq.req.wValue);
 }
 
 bool udc_prcm_setup_ack(void) {
 	/**/
-	bool ret = false;
+	bool ret = true;
 	switch (udd_g_ctrlreq.req.wValue) {
 		case REQ_WPAN_GET_ED:
-		case REQ_WAPN_GET_FEATURES:
-		case REQ_WPAN_GET_CHANNEL_LIST:
-			ret = true;
+			udd_g_ctrlreq.payload = &dev_cfg.last_ed;
+			udd_g_ctrlreq.payload_size = sizeof(dev_cfg.last_ed);
 			break;
-	}
+		case REQ_WPAN_GET_FEATURES:
+			udd_g_ctrlreq.payload = (uint8_t *)&dev_cfg;
+			udd_g_ctrlreq.payload_size = sizeof(wpan_dev_cfg);
+			break;
+		case REQ_WPAN_GET_CHANNEL_LIST:
+			udd_g_ctrlreq.payload = (uint8_t *)&channel_page_support;
+			udd_g_ctrlreq.payload_size = sizeof(channel_page_support);
+			break;
+		default:
+			ret = false;
+	};
 	return ret;
 }
 
@@ -191,7 +169,7 @@ void prcm_task(void) {
 	to_radio = qmm_queue_remove(&host_to_radio_queue, NULL);
 	if(to_radio != NULL) {
 		/* send frame via radio */
-		tal_tx_frame((struct frame_info_t *)to_radio->body, 0,false); 
+		tal_tx_frame((struct frame_info_t *)(to_radio->body), 0,false);
 			/*dev_cfg.csma_mode, dev_cfg.max_frame_retries > 0 ? true : false); */
 		bmm_buffer_free(to_radio);
 	};
